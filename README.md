@@ -1,5 +1,5 @@
 # HGN
-Code for Hero-Gang Neural model Accepted in NAACL-2022
+Code for Hero-Gang Neural model (Accepted in NAACL-2022)
 
 ## Requirements
 
