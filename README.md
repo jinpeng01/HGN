@@ -41,5 +41,5 @@ CUDA_VISIBLE_DEVICES=0 python run_hgn.py \
 --connect_type=${connect_type}
 ```
 In this bash, `Model` is the path to your pre-trained model (such as BERT, XLNET or BioBERT), `windows_list` is the hyperparameter that control the windows.
-For example, `1qq3qq5qq7` means that we utilize 3 different windows and their sizes are 3,7 and 7 respectively. `connect_type` can be mlp-att or dot-att.
+For example, `1qq3qq5qq7` means that we utilize 4 different windows and their sizes are 1, 3, 5 and 7 respectively. `connect_type` can be mlp-att or dot-att.
 
