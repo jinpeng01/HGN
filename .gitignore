@@ -1,1 +1,6 @@
 train_origin.sh
+/xlnet_bash/
+/trained_model/
+test.sh
+test_origin.sh
+run_hgn_original.py

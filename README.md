@@ -5,12 +5,15 @@ Code for Hero-Gang Neural model (Accepted in NAACL-2022)
 
 - Python 3 (tested on 3.7)
 - PyTorch (tested on 1.5 and 1.7)
-## Data
 
+## Data
 We give an example dataset in data/W16_bio
 
 
-## Training and Evaluation
+
+
+
+## Training 
 To start training, run
 
 ```
@@ -43,3 +46,28 @@ CUDA_VISIBLE_DEVICES=0 python run_hgn.py \
 In this bash, `Model` is the path to your pre-trained model (such as BERT, XLNET or BioBERT), `windows_list` is the hyperparameter that control the windows.
 For example, `1qq3qq5qq7` means that we utilize 4 different windows and their sizes are 1, 3, 5 and 7 respectively. `connect_type` can be mlp-att or dot-att.
 
+## Evaluation
+
+```
+CUDA_VISIBLE_DEVICES=0 python run_hgn.py \
+--train_data_dir=data/$data_type/train_merge.txt \
+--dev_data_dir=data/$data_type/dev.txt \
+--test_data_dir=data/$data_type/test.txt \
+--bert_model=${MODEL} \
+--task_name=ner \
+--output_dir=./saved_model_path \
+--max_seq_length=128 \
+--num_train_epochs ${epoch} \
+--do_predict \
+--gpu_id 0 \
+--learning_rate ${lr} \
+--warmup_proportion=0.1 \
+--train_batch_size=32 \
+--use_bilstm \
+--use_multiple_window \
+--windows_list=${wis} \
+--connect_type=${connect_type}
+```
+
+## Pre-trained model
+you can download the pre-trained models from ([the link](https://pan.baidu.com/s/1VYAFwvNcZTZwQqoPWfnvDQ)  passwd: ot58).

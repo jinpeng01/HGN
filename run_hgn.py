@@ -971,32 +971,15 @@ def main():
                 writer2.write('*******************epoch*******'+str(epoch_)+'\n')
                 writer2.write(report+'\n')
             
-            
 
-
-            # if f_eval > best_eval_f:
-            #     final_test_f = f_test
-            #     best_eval_f = f_eval
-            #     best_eval_model_path = os.path.join(args.output_dir,'model.pt')
-            #     torch.save(model, os.path.join(args.output_dir,'model.pt'))
-            
-            # if f_eval > best_eval_f:
-            #     best_eval_f = f_eval
-            #     final_test_f = f_test
-            #     #TODO
-            #
-            #
-            #     ##TODO save the model state_dict()
-            #     torch.save(model, os.path.join(args.output_dir,'model.pt'))
                 
         # Load a trained model and config that you have fine-tuned
-    
-    #else:
-        # Load a trained model and vocabulary that you have fine-tuned
-        #model = Ner.from_pretrained(args.output_dir)
-        #tokenizer = BertTokenizer.from_pretrained(args.output_dir, do_lower_case=args.do_lower_case)
-
-    #model.to(device)
+        output_f1_test = os.path.join(args.output_dir, "f1_score_epoch.txt")
+        with open(output_f1_test, "w") as writer1:
+            for i, j in zip(test_f1, dev_f1):
+                writer1.write(str(i) + '\t' + str(j) + '\n')
+            writer1.write('\n')
+            writer1.write(str(best_test_f))
 
     if args.do_eval and (args.local_rank == -1 or torch.distributed.get_rank() == 0):
         
@@ -1079,20 +1062,7 @@ def main():
         tokenizer = AutoTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
         model_best.to(device)
 
-        # eval_examples = processor.get_predict_examples(args.test_data_dir)
-        # eval_features, ori_sents = convert_examples_to_features(eval_examples, label_list, args.max_seq_length,
-        #                                                         tokenizer)
-        # logger.info("***** Running prediction *****")
-        # logger.info("  Num examples = %d", len(eval_examples))
-        # logger.info("  Batch size = %d", args.eval_batch_size)
-        # all_input_ids = torch.tensor([f.input_ids for f in eval_features], dtype=torch.long)
-        # all_input_mask = torch.tensor([f.input_mask for f in eval_features], dtype=torch.long)
-        # all_segment_ids = torch.tensor([f.segment_ids for f in eval_features], dtype=torch.long)
-        # all_label_ids = torch.tensor([f.label_id for f in eval_features], dtype=torch.long)
-        # all_valid_ids = torch.tensor([f.valid_ids for f in eval_features], dtype=torch.long)
-        # all_lmask_ids = torch.tensor([f.label_mask for f in eval_features], dtype=torch.long)
-        # eval_data = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids, all_valid_ids,
-        #                           all_lmask_ids)
+        #
 
         test_examples = processor.get_test_examples(args.test_data_dir)
         test_features, ori_sents = convert_examples_to_features(test_examples, label_list, args.max_seq_length, tokenizer)
