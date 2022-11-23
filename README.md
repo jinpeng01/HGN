@@ -1,5 +1,24 @@
 # HGN
-Code for Hero-Gang Neural Model For Named Entity Recognition (Accepted in NAACL-2022)
+Code for [Hero-Gang Neural Model For Named Entity Recognition](https://aclanthology.org/2022.naacl-main.140/) (Accepted in NAACL-2022)
+
+
+## Citations
+
+If you use or extend our work, please cite our paper at NAACL-2022.
+```
+@inproceedings{hu-etal-2022-hero,
+    title = "Hero-Gang Neural Model For Named Entity Recognition",
+    author = "Hu, Jinpeng  and
+      Shen, Yaling  and
+      Liu, Yang  and
+      Wan, Xiang  and
+      Chang, Tsung-Hui",
+    booktitle = "Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+    month = jul,
+    year = "2022"
+}
+```
+
 
 ## Requirements
 
